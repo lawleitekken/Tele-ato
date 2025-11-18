@@ -1431,18 +1431,21 @@ def setup_route():
 
 # ---------- Run (flask + your telegram client) ----------
 def run_flask():
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(host="0.0.0.0", port=8000, debug=False)
 
 def run_flask_server():
     """Run Flask without reloader so it doesn't spawn extra threads."""
     try:
-        app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
+        app.run(host="0.0.0.0", port8000, debug=False, use_reloader=False)
     except Exception as e:
         print(f"[FLASK] Exception in Flask thread: {e}")
 
+if __name__ == "__main__":
+    #threading.Thread(target=run_flask).start()
+    #client.run()
 # Start Flask in background (daemon)
-flask_thread = threading.Thread(target=run_flask_server, daemon=True, name="flask-thread")
-flask_thread.start()
+    flask_thread = threading.Thread(target=run_flask_server, daemon=True, name="flask-thread")
+    flask_thread.start()
 
 # Start Pyrogram client
 try:
@@ -1550,6 +1553,3 @@ finally:
     except Exception:
         pass
     sys.exit(0)
-
-if __name__ == '__main__':
-    app.run(debug=True)
