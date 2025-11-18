@@ -389,6 +389,8 @@ async def search(c: Client, m: Message):
 
     # ✅ Results found
     try:
+        text, buttons = build_index_page(results, 0)
+        await m.reply(text, parse_mode=enums.ParseMode.HTML, reply_markup=buttons, disable_web_page_preview=True)
         markup = get_file_buttons(results, query, 0)
         if not markup:  # safeguard against "No files" error
             raise ValueError("No buttons built")
