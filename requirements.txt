@@ -3,3 +3,5 @@ tgcrypto
 pymongo
 dotenv
 flask
+aiohttp<=3.8.1
+gunicorn<= 21.2.0
