@@ -1550,3 +1550,6 @@ finally:
     except Exception:
         pass
     sys.exit(0)
+
+if __name__ == '__main__':
+    app.run(debug=True)
